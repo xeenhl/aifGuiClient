@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aif.gui.controllers.MainWindowController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox fx:id="resultPlace" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="filesList" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="200.0" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#aifItClicked" text="Button">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <right>
+            <Label fx:id="info" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="5.0" />
+               </BorderPane.margin></Label>
+         </right>
+      </BorderPane>
+   </children>
+</VBox>
