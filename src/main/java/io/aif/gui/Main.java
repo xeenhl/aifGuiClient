@@ -3,6 +3,7 @@ package io.aif.gui;
 import io.aif.gui.model.ModelHendler;
 import io.aif.gui.resources.ResourceHelper;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ public class Main extends Application {
         primaryStage.setTitle("AIF Client");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
+
     }
 
 

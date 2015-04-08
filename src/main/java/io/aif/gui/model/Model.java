@@ -6,17 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Model {
 
-    private final Set<IResult<?>> results = new HashSet<>();
+    private final CopyOnWriteArrayList<IResult<?>> results = new CopyOnWriteArrayList<>();
 
     private final ObservableList<File> files = FXCollections.observableArrayList();
 
     private Stage mainStage = null;
 
-    public Set<IResult<?>> getResultsMap() {
+    public List<IResult<?>> getResults() {
         return results;
     }
 

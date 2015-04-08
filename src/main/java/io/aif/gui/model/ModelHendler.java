@@ -4,6 +4,7 @@ import io.aif.gui.model.results.IResult;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Set;
 
 public class ModelHendler {
@@ -11,11 +12,11 @@ public class ModelHendler {
     private final static Model model = new Model();
 
     public static void addResult(IResult<?> result) {
-        model.getResultsMap().add(result);
+        model.getResults().add(result);
     }
 
-    public static Set<IResult<?>> getResults() {
-        return model.getResultsMap();
+    public static List<IResult<?>> getResults() {
+        return model.getResults();
     }
 
     public static ObservableList<File> getFilesList() {

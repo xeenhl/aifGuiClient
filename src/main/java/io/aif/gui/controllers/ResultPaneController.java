@@ -78,7 +78,7 @@ public class ResultPaneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Set<IResult<?>> results = ModelHendler.getResults();
+        List<IResult<?>> results = ModelHendler.getResults();
 
 
 
