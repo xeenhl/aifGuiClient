@@ -38,11 +38,8 @@ public class MainWindowController {
 
 
     {
-        ModelHendler.getFilesList().addListener(new ListChangeListener<File>() {
-            @Override
-            public void onChanged(Change<? extends File> c) {
-                filesList.setItems(ModelHendler.getFilesList());
-            }
+        ModelHendler.getFilesList().addListener((ListChangeListener<File>) c -> {
+            filesList.setItems(ModelHendler.getFilesList());
         });
     }
 
@@ -88,29 +85,28 @@ public class MainWindowController {
         });
 
         Thread t = new Thread(task);
-        t.start();
         LoadHelper.getIndicator().progressProperty().bind(task.progressProperty());
-
+        t.start();
 
     }
 
     public void openFile() {
         final File f = new File(new FileChooser().showOpenDialog(ModelHendler.getMainStage()).toURI());
-        ModelHendler.addFileToList(f);
+        if(f != null)
+            ModelHendler.addFileToList(f);
     }
 
 
     private void showLoadPopUp() {
 
+        try {
+            AnchorPane p = FXMLLoader.load(ResourceHelper.getResourceURL("loadingPopUp.fxml"));
+            st.setScene(new Scene(p));
+            st.show();
 
-                try {
-                    AnchorPane p = FXMLLoader.load(ResourceHelper.getResourceURL("loadingPopUp.fxml"));
-                    st.setScene(new Scene(p));
-                    st.show();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

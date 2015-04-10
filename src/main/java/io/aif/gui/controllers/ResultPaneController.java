@@ -6,8 +6,6 @@ import io.aif.gui.model.results.IResult;
 import io.aif.gui.model.results.SemanticNode;
 import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
