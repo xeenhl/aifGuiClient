@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <TabPane fx:id="tabs" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aif.gui.controllers.ResultPaneController">
   <tabs>
     <Tab fx:id="ssplit" text="Split">
@@ -54,12 +56,12 @@
             </VBox>
          </content>
       </Tab>
-      <Tab fx:id="est" text="Token Separators">
+      <Tab fx:id="facts" text="Facts">
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Token Separators:" />
-                  <TextArea fx:id="estTokenSeparators" prefHeight="356.0" prefWidth="600.0" />
+                  <Label text="Facts:" />
+                  <TextArea fx:id="factsField" prefHeight="356.0" prefWidth="600.0" />
                </children>
             </VBox>
          </content>

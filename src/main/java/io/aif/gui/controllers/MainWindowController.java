@@ -20,6 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class MainWindowController {
 
@@ -60,18 +61,19 @@ public class MainWindowController {
         Task task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                aifLibHelper aifLibHelper = new aifLibHelper(file);
-                aifLibHelper.SSplit();
+                aifLibHelper aifLibHelper = new aifLibHelper(Paths.get(file.getPath()));
                 updateProgress(0.1, 1.0);
+                aifLibHelper.SSplit();
+                updateProgress(0.2, 1.0);
                 aifLibHelper.Ess();
                 updateProgress(0.3, 1.0);
                 aifLibHelper.DBuild();
                 updateProgress(0.5, 1.0);
                 aifLibHelper.TSplit();
                 updateProgress(0.7, 1.0);
-                aifLibHelper.Est();
+                aifLibHelper.Facts();
                 updateProgress(0.8, 1.0);
-                aifLibHelper.SBuild();
+                //aifLibHelper.SBuild();
                 updateProgress(1.0, 1.0);
 
                 return null;

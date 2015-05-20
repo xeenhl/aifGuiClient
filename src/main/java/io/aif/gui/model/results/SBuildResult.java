@@ -1,16 +1,12 @@
 package io.aif.gui.model.results;
 
 import io.aif.gui.model.ResultTab;
-import io.aif.language.semantic.ISemanticNode;
-import io.aif.language.word.IWord;
 
-import java.util.List;
-
-public class SBuildResult extends BasicResult<List<ISemanticNode<IWord>>> {
+public class SBuildResult extends BasicResult</*List<ISemanticNode<IWord>>*/String> {
 
     private final ResultTab resultId = ResultTab.SBUILD;
 
-    public SBuildResult(List<ISemanticNode<IWord>> iSemanticNodes) {
+    public SBuildResult(String iSemanticNodes) {
         super(iSemanticNodes);
     }
 

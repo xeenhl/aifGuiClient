@@ -3,9 +3,6 @@ package io.aif.gui.controllers;
 import io.aif.gui.model.ModelHendler;
 import io.aif.gui.model.ResultTab;
 import io.aif.gui.model.results.IResult;
-import io.aif.gui.model.results.SemanticNode;
-import io.aif.language.semantic.ISemanticNode;
-import io.aif.language.word.IWord;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -35,7 +32,7 @@ public class ResultPaneController implements Initializable{
     @FXML
     private Tab tsplit;
     @FXML
-    private Tab est;
+    private Tab facts;
     @FXML
     private Tab sbuild;
 
@@ -59,9 +56,9 @@ public class ResultPaneController implements Initializable{
     @FXML
     private TextArea tsplitTokens;
 
-    //EST tab controls
+    //FACT tab controls
     @FXML
-    private TextArea estTokenSeparators;
+    private TextArea factsField;
 
     //SBUILD tab controls
     @FXML
@@ -84,7 +81,7 @@ public class ResultPaneController implements Initializable{
         tabsList.put(ResultTab.ESS, ess);
         tabsList.put(ResultTab.DBUILD, dbuild);
         tabsList.put(ResultTab.TSPLIT, tsplit);
-        tabsList.put(ResultTab.EST, est);
+        tabsList.put(ResultTab.FACT, facts);
         tabsList.put(ResultTab.SBUILD, sbuild);
 
         results.stream().forEach(this::initializeResults);
@@ -112,9 +109,9 @@ public class ResultPaneController implements Initializable{
                 initTSPLITTab(result);
                 tabsList.remove(ResultTab.TSPLIT);
                 break;
-            case EST:
-                initESTTab(result);
-                tabsList.remove(ResultTab.EST);
+            case FACT:
+                initFACTSTab(result);
+                tabsList.remove(ResultTab.FACT);
                 break;
             case SBUILD:
                 initSBUILDTab(result);
@@ -179,30 +176,26 @@ public class ResultPaneController implements Initializable{
         tsplitTokens.setText( results.stream().collect(Collectors.joining("\n")));
     }
 
-    private void initESTTab(IResult<?> result) {
-        final List<Character> results = (List<Character>) result.getResult();
-        final List<String> separators = new ArrayList<>();
-        results.stream().forEach(s -> {
-            separators.add("\"" + s.toString() + "\"");
-        });
-        estTokenSeparators.setText(separators.stream().collect(Collectors.joining("\n")));
+    private void initFACTSTab(IResult<?> result) {
+        final String results = (String) result.getResult();
+        factsField.setText(results);
     }
 
     private void initSBUILDTab(IResult<?> result) {
 
-        List<ISemanticNode<IWord>> results = (List<ISemanticNode<IWord>>) result.getResult();
-
-        ObservableList<SemanticNode> nodes  = FXCollections.observableArrayList();
-
-        nodes.addListener((ListChangeListener<SemanticNode>) c -> {
-            sbuildNodes.setItems(nodes);
-        });
-
-        sbuildNodes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            sbuildDetailes.setText(((SemanticNode)newValue).getDetailes());
-        });
-
-        results.stream().forEach(s -> nodes.add(new SemanticNode(s)));
+//        List<ISemanticNode<IWord>> results = (List<ISemanticNode<IWord>>) result.getResult();
+//
+//        ObservableList<SemanticNode> nodes  = FXCollections.observableArrayList();
+//
+//        nodes.addListener((ListChangeListener<SemanticNode>) c -> {
+//            sbuildNodes.setItems(nodes);
+//        });
+//
+//        sbuildNodes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            sbuildDetailes.setText(((SemanticNode)newValue).getDetailes());
+//        });
+//
+//        results.stream().forEach(s -> nodes.add(new SemanticNode(s)));
 
 
     }
